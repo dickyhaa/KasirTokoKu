@@ -56,7 +56,7 @@
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Data Barang Masuk</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Stok barang hari ini</li>
+                            <li class="breadcrumb-item active">Barang Masuk</li>
                         </ol>
 
                         <!-- Tombol untuk membuka modal, kode modal ada di bawah -->

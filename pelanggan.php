@@ -45,6 +45,7 @@ require 'ceklogin.php';
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-edit"></i></div>
                                 Kelola Pelanggan
                             </a>
+                            
                             <a class="nav-link" href="logout.php">                                
                                 Log Out
                             </a>

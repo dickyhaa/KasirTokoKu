@@ -222,7 +222,7 @@
 
         <!-- Modal Header -->
         <div class="modal-header">
-            <h4 class="modal-title">Tambah Jenis Barang</h4>
+            <h4 class="modal-title">Tambah Barang Baru</h4>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <form method="post">
