@@ -9,15 +9,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+        <meta charset="UTF-8">
         <title>Kasir TokoKu</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -98,7 +95,7 @@
                                         //Memasukkan semua data dari tabel produk ke variabel ambil
                                             $ambil = mysqli_query($koneksi, "SELECT * FROM produk");
                                             $i = 1; //Digunakan sebagai penomoran, karena penambahan while loop (iterasi)
-
+                                        
                                         //Selama variabel produk memiliki nilai, tampilkan data ke website
                                         //Start of while
                                             while($produk = mysqli_fetch_array($ambil)) {
@@ -132,9 +129,9 @@
                                                     <h4 class="modal-title">Edit <?=$namaproduk;?></h4>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                 </div>
-
+                                                
                                                 <form method="post">
-
+                                                    
                                                 <!-- Modal body -->
                                                 <div class="modal-body">
                                                     <input type="text" name="namaproduk" id="" class="form-control" placeholder="Nama Barang" value="<?=$namaproduk;?>">
@@ -219,32 +216,32 @@
     </body>
 
     <!-- The Modal -->
-<div class="modal fade" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Tambah Jenis Barang</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">Tambah Jenis Barang</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <form method="post">
 
-      <form method="post">
+        <!-- Modal body -->
+        <div class="modal-body">
+            <input type="text" name="namaproduk" id="" class="form-control" placeholder="Nama Barang">
+            <input type="num" name="harga" id="" class="form-control mt-2" placeholder="Harga Barang">
+            <input type="num" name="stok" id="" class="form-control mt-2" placeholder="Stok">
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success" name="tambahstok">Tambahkan</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batalkan</button>
+        </div>
+        </form>
 
-      <!-- Modal body -->
-      <div class="modal-body">
-        <input type="text" name="namaproduk" id="" class="form-control" placeholder="Nama Barang">
-        <input type="num" name="harga" id="" class="form-control mt-2" placeholder="Harga Barang">
-        <input type="num" name="stok" id="" class="form-control mt-2" placeholder="Stok">
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-success" name="tambahstok">Tambahkan</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batalkan</button>
-      </div>
-      </form>
-    </div>    
-  </div>
+        </div>    
+    </div>
 </div>
 </html>
