@@ -1,6 +1,6 @@
 # KasirTokoKu
 
-KasirTokoKu adalah aplikasi kasir berbasis web yang dirancang untuk memudahkan pengelolaan transaksi penjualan, stok produk, dan laporan keuangan TokoKu. Dengan antarmuka yang sederhana dan fitur lengkap, KasirTokoKu membantu operasional toko menjadi lebih efisien dan terorganisir.
+KasirTokoKu adalah aplikasi kasir berbasis web yang dirancang untuk memudahkan pengelolaan transaksi penjualan, stok produk, dan laporan keuangan TokoKu. Dengan tampilan yang sederhana dan fitur lengkap, web KasirTokoKu membantu operasional toko menjadi lebih efisien dan terorganisir.
 
 ![KasirTokoKu Banner](https://inspgr.id/app/uploads/2023/05/pixel-art-kirokaze-18.gif)
 
