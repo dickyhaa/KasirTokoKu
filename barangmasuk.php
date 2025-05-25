@@ -149,7 +149,7 @@
 
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Hapus Barang - <?=$namaproduk;?></h4>
+                                                    <h4 class="modal-title">Hapus Barang Masuk</h4>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                 </div>
 
@@ -157,13 +157,16 @@
 
                                                 <!-- Modal body -->
                                                 <div class="modal-body">
-                                                    Konfirmasi penghapusan jenis Barang.
-                                                    <input type="hidden" name="idpr" value="<?=$idproduk;?>">
+                                                    Nama Barang: <strong><?=$namaproduk;?></strong><br>
+                                                    Jumlah: <strong><?=$jumlah;?></strong><br>
+                                                    Apakah Anda yakin ingin menghapus data ini?
+                                                    <input type="hidden" name="idproduk" value="<?=$idproduk;?>">
+                                                    <input type="hidden" name="idm" value="<?=$idmasuk;?>">
                                                 </div>
 
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-success" name="deletebarang">Hapus</button>
+                                                    <button type="submit" class="btn btn-success" name="hapusdatabarangmasuk">Hapus</button>
                                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batalkan</button>
                                                 </div>
 

@@ -302,7 +302,7 @@ if(isset($_POST['editpelanggan'])) {
     
 }
 
-// Fungsi modal delete epelanggan di HALAMAN PELANGGAN.php
+// Fungsi modal delete pelanggan di HALAMAN PELANGGAN.php
 if (isset($_POST['deletepelanggan'])) {
     $idpelanggan = $_POST['idpelanggan'];
 
@@ -374,6 +374,39 @@ if(isset($_POST['editdatabarangmasuk'])) {
             </script>
             ';
         }
+    }
+}
+
+// Fungsi modal hapus barang masuk di HALAMAN BARANGMASUK.php
+if (isset($_POST['hapusdatabarangmasuk'])) {
+    $idm = $_POST['idm']; // id masuk
+    $idproduk = $_POST['idproduk']; // id produk
+
+    // Cek jumlah saat ini
+    $cekjumlah1 = mysqli_query($koneksi, "SELECT * FROM masuk WHERE idmasuk='$idm'");
+    $cekjumlah2 = mysqli_fetch_array($cekjumlah1);
+    $jumlahsekarang = $cekjumlah2['qty'];
+
+    // Cek stok saat ini
+    $cekstok1 = mysqli_query($koneksi, "SELECT * FROM produk WHERE idproduk='$idproduk'");
+    $cekstok2 = mysqli_fetch_array($cekstok1);
+    $stoksekarang = $cekstok2['stok'];
+
+    // Hitung selisih
+    $newstok = $stoksekarang-$jumlahsekarang;
+
+    $query1 = mysqli_query($koneksi, "DELETE FROM masuk WHERE idmasuk='$idm'");
+    $query2 = mysqli_query($koneksi, "UPDATE produk SET stok ='$newstok' WHERE idproduk='$idproduk'");
+
+    if ($query1&&$query2) {
+        header('location:barangmasuk.php');
+    } else {
+        echo '
+        <script>
+            alert("Gagal menghapus data barang masuk");
+            window.location.href="barangmasuk.php";
+        </script>
+        ';
     }
 }
 
