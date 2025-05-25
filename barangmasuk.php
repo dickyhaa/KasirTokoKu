@@ -75,7 +75,7 @@
                                             <th>No</th>
                                             <th>Nama Barang</th>
                                             <th>Jumlah</th>
-                                            <th>Tanggal</th>
+                                            <th>Tanggal Masuk</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>                                    
@@ -87,10 +87,12 @@
 
                                         //Selama variabel produk memiliki nilai, tampilkan data ke website
                                         //Start of while
-                                            while($produk = mysqli_fetch_array($ambil)) {
-                                                $namaproduk = $produk['namaproduk'];
-                                                $jumlah = $produk['qty'];
-                                                $tanggal = $produk['tanggalmasuk'];
+                                        while($produk = mysqli_fetch_array($ambil)) {
+                                        $namaproduk = $produk['namaproduk'];
+                                        $jumlah = $produk['qty'];
+                                        $idmasuk = $produk['idmasuk'];
+                                        $idproduk = $produk['idproduk'];
+                                        $tanggal = $produk['tanggalmasuk'];
 
                                         ?>
                                         <tr>
@@ -99,56 +101,55 @@
                                             <td><?=$jumlah;?></td>
                                             <td><?=$tanggal;?></td>
                                             <td>
-                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?=$idproduk;?>">
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?=$idmasuk;?>">
                                                 Edit
                                             </button>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idproduk;?>">
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idmasuk;?>">
                                                 Delete
                                             </button>
                                             </td>
                                         </tr>
 
                                             <!-- Modal untuk fungsi Edit -->
-                                            <div class="modal fade" id="edit<?=$idproduk;?>">
-                                            <div class="modal-dialog">
+                                            <div class="modal fade" id="edit<?=$idmasuk;?>">
+                                                <div class="modal-dialog">
                                                 <div class="modal-content">
 
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Edit <?=$namaproduk;?></h4>
+                                                    <h4 class="modal-title">Ubah barang masuk</h4>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                 </div>
-
+                                                
                                                 <form method="post">
-
                                                 <!-- Modal body -->
                                                 <div class="modal-body">
-                                                    <input type="text" name="namaproduk" id="" class="form-control" placeholder="Nama Barang" value="<?=$namaproduk;?>">
-                                                    <input type="num" name="harga" id="" class="form-control mt-2" placeholder="Harga Barang" value="<?=$harga;?>">
-                                                    <input type="num" name="stok" id="" class="form-control mt-2" placeholder="Stok" value="<?=$stok;?>">
-                                                    <input type="hidden" name="idpr" value="<?=$idproduk;?>">
+                                                    <input type="text" name="namaproduk" id="" class="form-control" placeholder="Nama Barang" value="<?=$namaproduk;?>"disabled>
+                                                    <input type="number" name="jumlah" id="" class="form-control mt-2" placeholder="jumlah" value="<?=$jumlah;?>">
+                                                    <input type="hidden" name="idm" value="<?=$idmasuk;?>">
+                                                    <input type="hidden" name="idproduk" value="<?=$idproduk;?>">
                                                 </div>
 
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-success" name="editbarang">Ubah</button>
+                                                    <button type="submit" class="btn btn-success" name="editdatabarangmasuk">Ubah</button>
                                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batalkan</button>
                                                 </div>
 
                                                 </form>
 
                                                 </div>    
-                                            </div>
+                                                </div>
                                             </div>
 
-                                                <!-- Modal untuk fungsi Delete -->
-                                            <div class="modal fade" id="delete<?=$idproduk;?>">
-                                            <div class="modal-dialog">
+                                            <!-- Modal untuk fungsi Delete -->
+                                            <div class="modal fade" id="delete<?=$idmasuk;?>">
+                                                <div class="modal-dialog">
                                                 <div class="modal-content">
 
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Hapus <?=$namaproduk;?></h4>
+                                                    <h4 class="modal-title">Hapus Barang - <?=$namaproduk;?></h4>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                 </div>
 
@@ -169,7 +170,7 @@
                                                 </form>
 
                                                 </div>    
-                                            </div>
+                                                </div>
                                             </div>
 
                                         <?php

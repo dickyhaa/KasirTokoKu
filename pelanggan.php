@@ -116,32 +116,31 @@ require 'ceklogin.php';
                                             </button>
                                             </td>
                                         </tr>
-                                                <!-- Modal untuk fungsi Edit -->
+                                            <!-- Modal untuk fungsi Edit -->
                                             <div class="modal fade" id="edit<?=$idpelanggan;?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
 
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Edit <?=$namapelanggan;?></h4>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                </div>
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Edit Pelanggan - <?=$namapelanggan;?></h4>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                    </div>
+                                                    <form method="post">
 
-                                                <form method="post">
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <input type="text" name="namapelanggan" id="" class="form-control" placeholder="Nama Pelanggan" value="<?=$namapelanggan;?>">
+                                                        <input type="text" name="notelp" id="" class="form-control mt-2" placeholder="No. Telepon" value="<?=$notelp;?>">
+                                                        <input type="text" name="alamat" id="" class="form-control mt-2" placeholder="Alamat" value="<?=$alamat;?>">
+                                                        <input type="hidden" name="idpelanggan" value="<?=$idpelanggan;?>">
+                                                    </div>
 
-                                                <!-- Modal body -->
-                                                <div class="modal-body">
-                                                    <input type="text" name="namapelanggan" id="" class="form-control" placeholder="Nama Pelanggan" value="<?=$namapelanggan;?>">
-                                                    <input type="text" name="notelp" id="" class="form-control mt-2" placeholder="No. Telepon" value="<?=$notelp;?>">
-                                                    <input type="text" name="alamat" id="" class="form-control mt-2" placeholder="Alamat" value="<?=$alamat;?>">
-                                                    <input type="hidden" name="idpelanggan" value="<?=$idpelanggan;?>">
-                                                </div>
-
-                                                <!-- Modal footer -->
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-success" name="editpelanggan">Ubah</button>
-                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batalkan</button>
-                                                </div>
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-success" name="editpelanggan">Ubah</button>
+                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batalkan</button>
+                                                    </div>
 
                                                 </form>
 
@@ -149,30 +148,30 @@ require 'ceklogin.php';
                                             </div>
                                             </div>
 
-                                                <!-- Modal untuk fungsi Delete -->
+                                            <!-- Modal untuk fungsi Delete -->
                                             <div class="modal fade" id="delete<?=$idpelanggan;?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
 
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Hapus <?=$namapelanggan;?></h4>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                </div>
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Hapus Pelanggan - <?=$namapelanggan;?></h4>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                    </div>
 
-                                                <form method="post">
+                                                    <form method="post">
 
-                                                <!-- Modal body -->
-                                                <div class="modal-body">
-                                                    Konfirmasi penghapusan pelanggan.
-                                                    <input type="hidden" name="idpelanggan" value="<?=$idpelanggan;?>">
-                                                </div>
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        Konfirmasi penghapusan data pelanggan.
+                                                        <input type="hidden" name="idpelanggan" value="<?=$idpelanggan;?>">
+                                                    </div>
 
-                                                <!-- Modal footer -->
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-success" name="deletepelanggan">Hapus</button>
-                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batalkan</button>
-                                                </div>
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-success" name="deletepelanggan">Hapus</button>
+                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batalkan</button>
+                                                    </div>
 
                                                 </form>
 
@@ -214,31 +213,31 @@ require 'ceklogin.php';
 
     <!-- The Modal -->
 <div class="modal fade" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Tambah Pelanggan</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">Tambah Pelanggan</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
 
-      <form method="post">
+        <form method="post">
 
-      <!-- Modal body -->
-      <div class="modal-body">
-        <input type="text" name="namapelanggan" id="" class="form-control" placeholder="Nama Pelanggan">
-        <input type="text" name="notelp" id="" class="form-control mt-2" placeholder="No. Telepon">
-        <input type="text" name="alamat" id="" class="form-control mt-2" placeholder="Alamat">
-      </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+            <input type="text" name="namapelanggan" id="" class="form-control" placeholder="Nama Pelanggan">
+            <input type="text" name="notelp" id="" class="form-control mt-2" placeholder="No. Telepon">
+            <input type="text" name="alamat" id="" class="form-control mt-2" placeholder="Alamat">
+        </div>
 
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-success" name="tambahpelanggan">Tambahkan</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batalkan</button>
-      </div>
-      </form>
-    </div>    
-  </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success" name="tambahpelanggan">Tambahkan</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batalkan</button>
+        </div>
+        </form>
+        </div>    
+    </div>
 </div>
 </html>

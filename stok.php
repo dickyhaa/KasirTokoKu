@@ -121,12 +121,12 @@
 
                                             <!-- Modal untuk fungsi Edit -->
                                             <div class="modal fade" id="edit<?=$idproduk;?>">
-                                            <div class="modal-dialog">
+                                                <div class="modal-dialog">
                                                 <div class="modal-content">
 
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Edit <?=$namaproduk;?></h4>
+                                                    <h4 class="modal-title">Edit Barang - <?=$namaproduk;?></h4>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                 </div>
                                                 
@@ -149,17 +149,17 @@
                                                 </form>
 
                                                 </div>    
-                                            </div>
+                                                </div>
                                             </div>
 
-                                                <!-- Modal untuk fungsi Delete -->
+                                            <!-- Modal untuk fungsi Delete -->
                                             <div class="modal fade" id="delete<?=$idproduk;?>">
-                                            <div class="modal-dialog">
+                                                <div class="modal-dialog">
                                                 <div class="modal-content">
 
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Hapus <?=$namaproduk;?></h4>
+                                                    <h4 class="modal-title">Hapus Barang - <?=$namaproduk;?></h4>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                 </div>
 
@@ -180,7 +180,7 @@
                                                 </form>
 
                                                 </div>    
-                                            </div>
+                                                </div>
                                             </div>
 
                                         <?php

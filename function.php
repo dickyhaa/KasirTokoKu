@@ -5,7 +5,7 @@ session_start();
 // buat koneksi 
 $koneksi = mysqli_connect("localhost","root","","dbkasirtokoku");
 
-//Fungsi LOG IN
+//====Fungsi modal LOG IN====
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -29,7 +29,7 @@ if (isset($_POST['login'])) {
     }
 }
 
-// Fungsi Registrasi
+//====Fungsi modal Registrasi====
 if(isset($_POST['register'])) {
     $inputusername = htmlspecialchars($_POST['username']);
     $inputpassword = $_POST['password'];
@@ -60,7 +60,7 @@ if(isset($_POST['register'])) {
     }
 }
 
-// Fungsi HALAMAN STOK.php
+//====Fungsi HALAMAN STOK.php====
 if(isset($_POST['tambahstok'])) {
     $namaproduk = $_POST['namaproduk'];
     $harga = $_POST['harga'];
@@ -84,7 +84,7 @@ if(isset($_POST['tambahstok'])) {
     }
 }
 
-// Fungsi HALAMAN PELANGGANG.php
+//====Fungsi HALAMAN PELANGGANG.php====
 if(isset($_POST['tambahpelanggan'])) {
     $namapelanggan = $_POST['namapelanggan'];
     $notelp = $_POST['notelp'];
@@ -236,7 +236,7 @@ if(isset($_POST['hapuspilihan'])) {
 
 }
 
-// Fungsi untuk modal editbarang di halaman stok.php
+// Fungsi modal editbarang HALAMAN STOK.php
 if(isset($_POST['editbarang'])) {
     $namaproduk = $_POST['namaproduk'];
     $harga = $_POST['harga'];
@@ -260,7 +260,7 @@ if(isset($_POST['editbarang'])) {
     
 }
 
-// Fungsi untuk modal deletbarang di halaman stok.php
+// Fungsi modal hapus barang HALAMAN STOK.php
 if (isset($_POST['deletebarang'])) {
     $idpr = $_POST['idpr'];
 
@@ -278,7 +278,7 @@ if (isset($_POST['deletebarang'])) {
     }
 }
 
-// Fungsi untuk modal editpelanggan di halaman pelanggan.php
+// Fungsi modal edit pelanggan di HALAMAN PELANGGAN.php
 if(isset($_POST['editpelanggan'])) {
     $namapelanggan = $_POST['namapelanggan'];
     $notelp = $_POST['notelp'];
@@ -302,7 +302,7 @@ if(isset($_POST['editpelanggan'])) {
     
 }
 
-// Fungsi untuk modal deletepelanggan di halaman pelanggan.php
+// Fungsi modal delete epelanggan di HALAMAN PELANGGAN.php
 if (isset($_POST['deletepelanggan'])) {
     $idpelanggan = $_POST['idpelanggan'];
 
@@ -317,6 +317,63 @@ if (isset($_POST['deletepelanggan'])) {
             window.location.href="pelanggan.php";
         </script>
         ';
+    }
+}
+
+// Fungsi modal edit barang masuk di HALAMAN BARANGMASUK.php
+if(isset($_POST['editdatabarangmasuk'])) {
+    $jumlah = $_POST['jumlah'];
+    $idm = $_POST['idm']; // id masuk
+    $idproduk = $_POST['idproduk']; // id produk
+
+    // Cek jumlah saat ini
+    $cekjumlah1 = mysqli_query($koneksi, "SELECT * FROM masuk WHERE idmasuk='$idm'");
+    $cekjumlah2 = mysqli_fetch_array($cekjumlah1);
+    $jumlahsekarang = $cekjumlah2['qty'];
+
+    // Cek stok saat ini
+    $cekstok1 = mysqli_query($koneksi, "SELECT * FROM produk WHERE idproduk='$idproduk'");
+    $cekstok2 = mysqli_fetch_array($cekstok1);
+    $stoksekarang = $cekstok2['stok'];
+
+    if($jumlah >= $jumlahsekarang) {
+        // Kalau inputan user lebih besar atau sama dengan qty yang sekarang
+        // Hitung selisih
+        $selisih = $jumlah-$jumlahsekarang;
+        $newstok = $stoksekarang+$selisih;
+
+        $query1 = mysqli_query($koneksi, "UPDATE masuk set qty='$jumlah' WHERE idmasuk='$idm'");
+        $query2 = mysqli_query($koneksi, "UPDATE produk SET stok ='$newstok' WHERE idproduk='$idproduk'");
+
+        if ($query1&&$query2) {
+            header('location:barangmasuk.php');
+        } else {
+            echo '
+            <script>
+                alert("Gagal mengubah data barang masuk");
+                window.location.href="barangmasuk.php";
+            </script>
+            ';
+        }
+    } else {
+        // Kalau inputan user lebih kecil  dengan qty yang sekarang
+        // Hitung selisih
+        $selisih = $jumlahsekarang-$jumlah;
+        $newstok = $stoksekarang-$selisih;
+
+        $query1 = mysqli_query($koneksi, "UPDATE masuk set qty='$jumlah' WHERE idmasuk='$idm'");
+        $query2 = mysqli_query($koneksi, "UPDATE produk SET stok ='$newstok' WHERE idproduk='$idproduk'");
+
+        if ($query1&&$query2) {
+            header('location:barangmasuk.php');
+        } else {
+            echo '
+            <script>
+                alert("Gagal mengubah data barang masuk");
+                window.location.href="barangmasuk.php";
+            </script>
+            ';
+        }
     }
 }
 
@@ -416,8 +473,4 @@ if(isset($_POST['editpilihanbarang'])) {
         }
     }
 }
-
-//Fungsi LOG OUT
-
-
 ?>

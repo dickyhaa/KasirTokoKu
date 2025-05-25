@@ -44,7 +44,7 @@ require 'function.php';
     </style>
 </head>
 <body>
-    <button class="btn btn-sm btn-light toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    <button class="btn btn-sm btn-light toggle-btn" onclick="toggleDarkMode()">🌙🌑 Dark Mode</button>
     <div class="card">
         <h3 class="text-center mb-4">Registrasi Kasir TokoKu</h3>
         <?php if (isset($error)) : ?>
