@@ -5,7 +5,7 @@ session_start();
 // buat koneksi 
 $koneksi = mysqli_connect("localhost","root","","dbkasirtokoku");
 
-//====Fungsi modal LOG IN====
+//====Fungsi modal HALAMAN LOG IN====
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -17,19 +17,19 @@ if (isset($_POST['login'])) {
     // Cek jika user ditemukan dan password cocok
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['loginsuccess'] = 'True';
-        header('location:index.php');
+        header('location:index.php'); // Redirect ke halaman index.php
         exit;
     } else {
         echo '
         <script>
             alert("Username atau Password salah");
-            window.location.href="login.php";
+            window.location.href="login.php";  
         </script>
         ';
     }
 }
 
-//====Fungsi modal Registrasi====
+//====Fungsi modal HALAMAN Registrasi====
 if(isset($_POST['register'])) {
     $inputusername = htmlspecialchars($_POST['username']);
     $inputpassword = $_POST['password'];
@@ -50,7 +50,8 @@ if(isset($_POST['register'])) {
             // Tambahkan user baru ke database
             $query = "INSERT INTO admin (username, password) VALUES ('$inputusername', '$passwordHash')";
             mysqli_query($koneksi, $query);
-
+            
+            // Cek apakah query berhasil
             if (mysqli_affected_rows($koneksi) > 0) {
                 echo "<script>alert('Registrasi berhasil!'); window.location='login.php';</script>";
             } else {
@@ -60,7 +61,8 @@ if(isset($_POST['register'])) {
     }
 }
 
-//====Fungsi HALAMAN STOK.php====
+//====Fungsi modal HALAMAN STOK.php====
+// Tambah stok produk
 if(isset($_POST['tambahstok'])) {
     $namaproduk = $_POST['namaproduk'];
     $harga = $_POST['harga'];
@@ -84,7 +86,8 @@ if(isset($_POST['tambahstok'])) {
     }
 }
 
-//====Fungsi HALAMAN PELANGGANG.php====
+//====Fungsi modal HALAMAN PELANGGANG.php====
+// Tambah pelanggan
 if(isset($_POST['tambahpelanggan'])) {
     $namapelanggan = $_POST['namapelanggan'];
     $notelp = $_POST['notelp'];
@@ -106,7 +109,8 @@ if(isset($_POST['tambahpelanggan'])) {
     }
 }
 
-//Fungsi HALAMAN INDEX.php
+//====Fungsi modal HALAMAN INDEX.php====
+// Tambah pesanan
 if(isset($_POST['tambahpesanan'])) {
     $idpelanggan = $_POST['idpelanggan'];
 
@@ -126,7 +130,8 @@ if(isset($_POST['tambahpesanan'])) {
     }
 }
 
-//Fungsi HALAMAN VIEW.php
+//====Fungsi modal HALAMAN VIEW.php====
+// Pilih barang untuk ditambahkan ke pesanan
 if(isset($_POST['pilihbarang'])) {
     $idproduk = $_POST['idproduk'];
     $idp = $_POST['idp'];//idpesanan
@@ -165,7 +170,8 @@ if(isset($_POST['pilihbarang'])) {
     }
 }
 
-//Fungsi Modal HALAMAN BARANGMASUK.php
+//====Fungsi Modal HALAMAN BARANGMASUK.php====
+// Tambah barang masuk
 if (isset($_POST['masuk'])) {
     $idproduk = $_POST['idproduk'];
     $qty = $_POST['qty'];
@@ -202,10 +208,11 @@ if (isset($_POST['masuk'])) {
     }
 }
 
-//Fungsi HALAMAN VIEW.php, hapus pilihan barang
+//====Fungsi modal HALAMAN VIEW.php====
+// Hapus pilihan barang
 if(isset($_POST['hapuspilihan'])) {
-    $idp = $_POST['idp']; //Ini iddetailpesanan, bukan idpesanan lihat halaman view.php
-    $idpr = $_POST['idpr'];
+    $idp = $_POST['idp']; // iddetailpesanan
+    $idpr = $_POST['idpr']; // idproduk
     $idpesanan = $_POST['idpesanan'];
 
     // Cek qty saat ini
@@ -410,7 +417,7 @@ if (isset($_POST['hapusdatabarangmasuk'])) {
     }
 }
 
-// Fungsi untuk modal deletepesanan di halaman index.php
+// Fungsi untuk modal delete pesanan di HALAMAN INDEX.php
 if (isset($_POST['deletepesanan'])) {
     $idpesanan = $_POST['idpesanan'];
 
@@ -448,7 +455,7 @@ if (isset($_POST['deletepesanan'])) {
     }
 }
 
-//Fungsi modal untuk halaman view.php, ubah pilihan barnag
+//Fungsi modal untuk HALAMAN VIEW.php
 if(isset($_POST['editpilihanbarang'])) {
     $qty = $_POST['qty'];
     $idpr = $_POST['idpr'];

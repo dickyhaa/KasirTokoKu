@@ -1,5 +1,5 @@
 <?php
-require 'function.php';
+require 'function.php'; // memastikan file function.php ada dan berisi fungsi koneksi ke database
 ?>
 
 <!DOCTYPE html>
