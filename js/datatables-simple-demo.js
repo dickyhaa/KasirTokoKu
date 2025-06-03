@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', event => {
-    // Simple-DataTables
-    // https://github.com/fiduswriter/Simple-DataTables/wiki
+    // Simple Datatables
+    //  This script initializes a simple DataTable on an HTML element with the ID 'datatablesSimple'.
 
     const datatablesSimple = document.getElementById('datatablesSimple');
     if (datatablesSimple) {
