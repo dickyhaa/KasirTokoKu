@@ -348,39 +348,29 @@ if(isset($_POST['editdatabarangmasuk'])) {
         // Hitung selisih
         $selisih = $jumlah-$jumlahsekarang;
         $newstok = $stoksekarang+$selisih;
-
-        $query1 = mysqli_query($koneksi, "UPDATE masuk set qty='$jumlah' WHERE idmasuk='$idm'");
-        $query2 = mysqli_query($koneksi, "UPDATE produk SET stok ='$newstok' WHERE idproduk='$idproduk'");
-
-        if ($query1&&$query2) {
-            header('location:barangmasuk.php');
-        } else {
-            echo '
-            <script>
-                alert("Gagal mengubah data barang masuk");
-                window.location.href="barangmasuk.php";
-            </script>
-            ';
-        }
     } else {
         // Kalau inputan user lebih kecil  dengan qty yang sekarang
         // Hitung selisih
         $selisih = $jumlahsekarang-$jumlah;
         $newstok = $stoksekarang-$selisih;
-
-        $query1 = mysqli_query($koneksi, "UPDATE masuk set qty='$jumlah' WHERE idmasuk='$idm'");
-        $query2 = mysqli_query($koneksi, "UPDATE produk SET stok ='$newstok' WHERE idproduk='$idproduk'");
-
-        if ($query1&&$query2) {
-            header('location:barangmasuk.php');
-        } else {
-            echo '
-            <script>
-                alert("Gagal mengubah data barang masuk");
-                window.location.href="barangmasuk.php";
-            </script>
-            ';
+        // CEK VALIDASI STOK TIDAK BOLEH MINUS
+        if ($newstok < 0) {
+            echo '<script>alert("Gagal mengubah data barang masuk: stok tidak boleh minus!");window.location.href="barangmasuk.php";</script>';
+            exit;
         }
+    }
+    $query1 = mysqli_query($koneksi, "UPDATE masuk set qty='$jumlah' WHERE idmasuk='$idm'");
+    $query2 = mysqli_query($koneksi, "UPDATE produk SET stok ='$newstok' WHERE idproduk='$idproduk'");
+
+    if ($query1&&$query2) {
+        header('location:barangmasuk.php');
+    } else {
+        echo '
+        <script>
+            alert("Gagal mengubah data barang masuk");
+            window.location.href="barangmasuk.php";
+        </script>
+        ';
     }
 }
 
@@ -401,7 +391,11 @@ if (isset($_POST['hapusdatabarangmasuk'])) {
 
     // Hitung selisih
     $newstok = $stoksekarang-$jumlahsekarang;
-
+    // CEK VALIDASI STOK TIDAK BOLEH MINUS
+    if ($newstok < 0) {
+        echo '<script>alert("Gagal menghapus data barang masuk: stok tidak boleh minus!");window.location.href="barangmasuk.php";</script>';
+        exit;
+    }
     $query1 = mysqli_query($koneksi, "DELETE FROM masuk WHERE idmasuk='$idm'");
     $query2 = mysqli_query($koneksi, "UPDATE produk SET stok ='$newstok' WHERE idproduk='$idproduk'");
 
