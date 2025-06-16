@@ -1,5 +1,5 @@
 # KasirTokoKu
-
+tes
 KasirTokoKu adalah sistem kasir berbasis web yang dibuat menggunakan **PHP** dan **MySQL** untuk membantu pengelolaan penjualan, stok barang, serta data pelanggan di toko skala kecil hingga menengah. Dilengkapi dengan fitur login, transaksi, dan manajemen barang masuk.
 
 ![KasirTokoKu Banner](https://inspgr.id/app/uploads/2023/05/pixel-art-kirokaze-17.gif)
